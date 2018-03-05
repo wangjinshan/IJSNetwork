@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7484EE86204D015400E48B1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484EE85204D015400E48B1E /* AppDelegate.m */; };
+		7484EE89204D015400E48B1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484EE88204D015400E48B1E /* ViewController.m */; };
+		7484EE8C204D015400E48B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7484EE8A204D015400E48B1E /* Main.storyboard */; };
+		7484EE8E204D015400E48B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7484EE8D204D015400E48B1E /* Assets.xcassets */; };
+		7484EE91204D015400E48B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7484EE8F204D015400E48B1E /* LaunchScreen.storyboard */; };
+		7484EE94204D015400E48B1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484EE93204D015400E48B1E /* main.m */; };
+		74F5E613204D047000974461 /* IJSNBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E60C204D046F00974461 /* IJSNBaseRequest.m */; };
+		74F5E614204D047000974461 /* IJSNetworkRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E60E204D047000974461 /* IJSNetworkRequestAgent.m */; };
+		74F5E615204D047000974461 /* IJSNCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E60F204D047000974461 /* IJSNCacheRequest.m */; };
+		74F5E616204D047000974461 /* IJSNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E610204D047000974461 /* IJSNetworkConfig.m */; };
+		74F5E626204D0ECF00974461 /* IJSDownloadMP4.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E625204D0ECF00974461 /* IJSDownloadMP4.m */; };
+		74F5E629204D0EF400974461 /* IJSRegisterAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E628204D0EF400974461 /* IJSRegisterAPI.m */; };
+		74F5E62C204D16BB00974461 /* IJSNetworkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E62B204D16BB00974461 /* IJSNetworkUtils.m */; };
+		74F5E641204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E640204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m */; };
+		74F5E647204D297100974461 /* IJSCacheMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E646204D297100974461 /* IJSCacheMetadata.m */; };
+		E7AF0CB3067D1D676FA079C5 /* libPods-IJSNetworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67319C0DDB2D27249C25AB8 /* libPods-IJSNetworkDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0723872CCBF30BC84DA7EB5A /* Pods-IJSNetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IJSNetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IJSNetworkDemo/Pods-IJSNetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7484EE81204D015400E48B1E /* IJSNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IJSNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7484EE84204D015400E48B1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7484EE85204D015400E48B1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7484EE87204D015400E48B1E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7484EE88204D015400E48B1E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7484EE8B204D015400E48B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7484EE8D204D015400E48B1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7484EE90204D015400E48B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7484EE92204D015400E48B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7484EE93204D015400E48B1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		74F5E60B204D046F00974461 /* IJSNCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJSNCacheRequest.h; sourceTree = "<group>"; };
+		74F5E60C204D046F00974461 /* IJSNBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJSNBaseRequest.m; sourceTree = "<group>"; };
+		74F5E60D204D046F00974461 /* IJSNBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJSNBaseRequest.h; sourceTree = "<group>"; };
+		74F5E60E204D047000974461 /* IJSNetworkRequestAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJSNetworkRequestAgent.m; sourceTree = "<group>"; };
+		74F5E60F204D047000974461 /* IJSNCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJSNCacheRequest.m; sourceTree = "<group>"; };
+		74F5E610204D047000974461 /* IJSNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJSNetworkConfig.m; sourceTree = "<group>"; };
+		74F5E611204D047000974461 /* IJSNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJSNetworkConfig.h; sourceTree = "<group>"; };
+		74F5E612204D047000974461 /* IJSNetworkRequestAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJSNetworkRequestAgent.h; sourceTree = "<group>"; };
+		74F5E624204D0ECF00974461 /* IJSDownloadMP4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSDownloadMP4.h; sourceTree = "<group>"; };
+		74F5E625204D0ECF00974461 /* IJSDownloadMP4.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSDownloadMP4.m; sourceTree = "<group>"; };
+		74F5E627204D0EF400974461 /* IJSRegisterAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSRegisterAPI.h; sourceTree = "<group>"; };
+		74F5E628204D0EF400974461 /* IJSRegisterAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSRegisterAPI.m; sourceTree = "<group>"; };
+		74F5E62A204D16BB00974461 /* IJSNetworkUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSNetworkUtils.h; sourceTree = "<group>"; };
+		74F5E62B204D16BB00974461 /* IJSNetworkUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSNetworkUtils.m; sourceTree = "<group>"; };
+		74F5E63F204D182C00974461 /* IJSNBaseRequest+RequestAccessory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IJSNBaseRequest+RequestAccessory.h"; sourceTree = "<group>"; };
+		74F5E640204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IJSNBaseRequest+RequestAccessory.m"; sourceTree = "<group>"; };
+		74F5E645204D297100974461 /* IJSCacheMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSCacheMetadata.h; sourceTree = "<group>"; };
+		74F5E646204D297100974461 /* IJSCacheMetadata.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSCacheMetadata.m; sourceTree = "<group>"; };
+		A28EB83A7801DD026EAE2DCC /* Pods-IJSNetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IJSNetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-IJSNetworkDemo/Pods-IJSNetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A67319C0DDB2D27249C25AB8 /* libPods-IJSNetworkDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IJSNetworkDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7484EE7E204D015400E48B1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7AF0CB3067D1D676FA079C5 /* libPods-IJSNetworkDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		68DF600B7F257295C0E290BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0723872CCBF30BC84DA7EB5A /* Pods-IJSNetworkDemo.debug.xcconfig */,
+				A28EB83A7801DD026EAE2DCC /* Pods-IJSNetworkDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7484EE78204D015400E48B1E = {
+			isa = PBXGroup;
+			children = (
+				74F5E5FC204D046300974461 /* IJSNetwork */,
+				7484EE83204D015400E48B1E /* IJSNetworkDemo */,
+				7484EE82204D015400E48B1E /* Products */,
+				68DF600B7F257295C0E290BF /* Pods */,
+				8EBF03F44C65BDC9BE694E15 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7484EE82204D015400E48B1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7484EE81204D015400E48B1E /* IJSNetworkDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7484EE83204D015400E48B1E /* IJSNetworkDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7484EE84204D015400E48B1E /* AppDelegate.h */,
+				7484EE85204D015400E48B1E /* AppDelegate.m */,
+				7484EE87204D015400E48B1E /* ViewController.h */,
+				7484EE88204D015400E48B1E /* ViewController.m */,
+				74F5E627204D0EF400974461 /* IJSRegisterAPI.h */,
+				74F5E628204D0EF400974461 /* IJSRegisterAPI.m */,
+				74F5E624204D0ECF00974461 /* IJSDownloadMP4.h */,
+				74F5E625204D0ECF00974461 /* IJSDownloadMP4.m */,
+				7484EE8A204D015400E48B1E /* Main.storyboard */,
+				7484EE8D204D015400E48B1E /* Assets.xcassets */,
+				7484EE8F204D015400E48B1E /* LaunchScreen.storyboard */,
+				7484EE92204D015400E48B1E /* Info.plist */,
+				7484EE93204D015400E48B1E /* main.m */,
+			);
+			path = IJSNetworkDemo;
+			sourceTree = "<group>";
+		};
+		74F5E5FC204D046300974461 /* IJSNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				74F5E5FD204D046300974461 /* IJSNetworking */,
+				74F5E606204D046300974461 /* IJSNExtension */,
+			);
+			path = IJSNetwork;
+			sourceTree = "<group>";
+		};
+		74F5E5FD204D046300974461 /* IJSNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				74F5E60D204D046F00974461 /* IJSNBaseRequest.h */,
+				74F5E60C204D046F00974461 /* IJSNBaseRequest.m */,
+				74F5E60B204D046F00974461 /* IJSNCacheRequest.h */,
+				74F5E60F204D047000974461 /* IJSNCacheRequest.m */,
+				74F5E611204D047000974461 /* IJSNetworkConfig.h */,
+				74F5E610204D047000974461 /* IJSNetworkConfig.m */,
+				74F5E612204D047000974461 /* IJSNetworkRequestAgent.h */,
+				74F5E60E204D047000974461 /* IJSNetworkRequestAgent.m */,
+			);
+			path = IJSNetworking;
+			sourceTree = "<group>";
+		};
+		74F5E606204D046300974461 /* IJSNExtension */ = {
+			isa = PBXGroup;
+			children = (
+				74F5E62A204D16BB00974461 /* IJSNetworkUtils.h */,
+				74F5E62B204D16BB00974461 /* IJSNetworkUtils.m */,
+				74F5E63F204D182C00974461 /* IJSNBaseRequest+RequestAccessory.h */,
+				74F5E640204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m */,
+				74F5E645204D297100974461 /* IJSCacheMetadata.h */,
+				74F5E646204D297100974461 /* IJSCacheMetadata.m */,
+			);
+			path = IJSNExtension;
+			sourceTree = "<group>";
+		};
+		8EBF03F44C65BDC9BE694E15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A67319C0DDB2D27249C25AB8 /* libPods-IJSNetworkDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7484EE80204D015400E48B1E /* IJSNetworkDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7484EE97204D015400E48B1E /* Build configuration list for PBXNativeTarget "IJSNetworkDemo" */;
+			buildPhases = (
+				81D8E3685C6C4A6545659DEF /* [CP] Check Pods Manifest.lock */,
+				7484EE7D204D015400E48B1E /* Sources */,
+				7484EE7E204D015400E48B1E /* Frameworks */,
+				7484EE7F204D015400E48B1E /* Resources */,
+				036D623E5D1B974621C2FC53 /* [CP] Embed Pods Frameworks */,
+				3ACA51DE36510ED2E529EB76 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IJSNetworkDemo;
+			productName = IJSNetworkDemo;
+			productReference = 7484EE81204D015400E48B1E /* IJSNetworkDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7484EE79204D015400E48B1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "山神";
+				TargetAttributes = {
+					7484EE80204D015400E48B1E = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7484EE7C204D015400E48B1E /* Build configuration list for PBXProject "IJSNetworkDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7484EE78204D015400E48B1E;
+			productRefGroup = 7484EE82204D015400E48B1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7484EE80204D015400E48B1E /* IJSNetworkDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7484EE7F204D015400E48B1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7484EE91204D015400E48B1E /* LaunchScreen.storyboard in Resources */,
+				7484EE8E204D015400E48B1E /* Assets.xcassets in Resources */,
+				7484EE8C204D015400E48B1E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		036D623E5D1B974621C2FC53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IJSNetworkDemo/Pods-IJSNetworkDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ACA51DE36510ED2E529EB76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IJSNetworkDemo/Pods-IJSNetworkDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81D8E3685C6C4A6545659DEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IJSNetworkDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7484EE7D204D015400E48B1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74F5E616204D047000974461 /* IJSNetworkConfig.m in Sources */,
+				74F5E615204D047000974461 /* IJSNCacheRequest.m in Sources */,
+				74F5E629204D0EF400974461 /* IJSRegisterAPI.m in Sources */,
+				74F5E626204D0ECF00974461 /* IJSDownloadMP4.m in Sources */,
+				74F5E613204D047000974461 /* IJSNBaseRequest.m in Sources */,
+				74F5E62C204D16BB00974461 /* IJSNetworkUtils.m in Sources */,
+				74F5E641204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m in Sources */,
+				7484EE89204D015400E48B1E /* ViewController.m in Sources */,
+				74F5E647204D297100974461 /* IJSCacheMetadata.m in Sources */,
+				7484EE94204D015400E48B1E /* main.m in Sources */,
+				74F5E614204D047000974461 /* IJSNetworkRequestAgent.m in Sources */,
+				7484EE86204D015400E48B1E /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7484EE8A204D015400E48B1E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7484EE8B204D015400E48B1E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7484EE8F204D015400E48B1E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7484EE90204D015400E48B1E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7484EE95204D015400E48B1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7484EE96204D015400E48B1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7484EE98204D015400E48B1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0723872CCBF30BC84DA7EB5A /* Pods-IJSNetworkDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7V3U9AVLEY;
+				INFOPLIST_FILE = IJSNetworkDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenzoom.ijs.IJSNetworkDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7484EE99204D015400E48B1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A28EB83A7801DD026EAE2DCC /* Pods-IJSNetworkDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7V3U9AVLEY;
+				INFOPLIST_FILE = IJSNetworkDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenzoom.ijs.IJSNetworkDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7484EE7C204D015400E48B1E /* Build configuration list for PBXProject "IJSNetworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7484EE95204D015400E48B1E /* Debug */,
+				7484EE96204D015400E48B1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7484EE97204D015400E48B1E /* Build configuration list for PBXNativeTarget "IJSNetworkDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7484EE98204D015400E48B1E /* Debug */,
+				7484EE99204D015400E48B1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7484EE79204D015400E48B1E /* Project object */;
+}
