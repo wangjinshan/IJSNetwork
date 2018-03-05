@@ -63,22 +63,22 @@
 
 - (void)addCacheDirPathFilter:(id<IJSCacheDirPathFilterDelegate>)filter
 {
-    [self.cacheDirPathFilters addObject:filter];
+    [_cacheDirPathFilters addObject:filter];
 }
 
 - (void)clearCacheDirPathFilter
 {
-    [self.cacheDirPathFilters removeAllObjects];
+    [_cacheDirPathFilters removeAllObjects];
 }
 
 - (NSArray<id<IJSUrlFilterDelegate>> *)urlFilters
 {
-    return [self.urlFilters copy];
+    return [_urlFilters copy];
 }
 
 - (NSArray<id<IJSCacheDirPathFilterDelegate>> *)cacheDirPathFilters
 {
-    return [self.cacheDirPathFilters copy];
+    return [_cacheDirPathFilters copy];
 }
 
 #pragma mark - NSObject

@@ -30,8 +30,8 @@
     // http://dvideo.spriteapp.cn/video/2018/0305/91dae4b4202711e897b5842b2b4c75ab_wpdm.mp4
    
     IJSNetworkConfig *config =[IJSNetworkConfig sharedConfig];
-    config.baseUrl = @"http://dvideo.spriteapp.cn";
-    config.cdnUrl = @"http://dvideo.spriteapp.cn";
+    config.baseUrl = @"http://s.budejie.com";
+//    config.cdnUrl = @"http://dvideo.spriteapp.cn";
     config.debugLogEnabled = YES;
 
 }

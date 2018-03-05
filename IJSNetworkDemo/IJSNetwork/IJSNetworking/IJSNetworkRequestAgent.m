@@ -71,119 +71,7 @@
     }
     return self;
 }
-
-- (AFJSONResponseSerializer *)jsonResponseSerializer
-{
-    if (!_jsonResponseSerializer)
-    {
-        _jsonResponseSerializer = [AFJSONResponseSerializer serializer];
-        _jsonResponseSerializer.acceptableStatusCodes = _allStatusCodes;
-    }
-    return _jsonResponseSerializer;
-}
-
-- (AFXMLParserResponseSerializer *)xmlParserResponseSerialzier
-{
-    if (!_xmlParserResponseSerialzier)
-    {
-        _xmlParserResponseSerialzier = [AFXMLParserResponseSerializer serializer];
-        _xmlParserResponseSerialzier.acceptableStatusCodes = _allStatusCodes;
-    }
-    return _xmlParserResponseSerialzier;
-}
-
-#pragma mark -
-
-//返回当前请求url
-- (NSString *)buildRequestUrl:(IJSNBaseRequest *)request
-{
-    NSParameterAssert(request != nil);
-    
-    NSString *detailUrl =request.requestUrl;  //用户自定义的url（不包括在YTKConfig里面设置的base_url）
-    NSURL *temp = [NSURL URLWithString:detailUrl];
-    // 如果请求的url 是一个完整的url 则会直接忽略之前的 baseurl 参数等等的 配置 存在host和scheme的url立即返回正确
-    if (temp && temp.host && temp.scheme)
-    {
-        return detailUrl;
-    }
-    // 如果需要过滤url，则过滤
-    NSArray *filters = _config.urlFilters;
-    for (id<IJSUrlFilterDelegate> f in filters)
-    {
-        detailUrl = [f filterUrl:detailUrl withRequest:request];
-    }
-    
-    NSString *baseUrl;
-    if (request.useCDN)
-    {
-        if ([request cdnUrl].length > 0)
-        {
-            baseUrl = request.cdnUrl; //如果使用CDN，在当前请求没有配置CDN地址的情况下，返回全局配置的CDN
-        }
-        else
-        {
-            baseUrl = _config.cdnUrl;
-        }
-    }
-    else
-    {
-        if ([request baseUrl].length > 0)
-        {//如果使用baseUrl，在当前请求没有配置baseUrl，返回全局配置的baseUrl
-            baseUrl = request.baseUrl;
-        }
-        else
-        {
-            baseUrl = _config.baseUrl;
-        }
-    }
-    // 如果末尾没有/，则在末尾添加一个／
-    NSURL *url = [NSURL URLWithString:baseUrl];
-    
-    if (baseUrl.length > 0 && ![baseUrl hasSuffix:@"/"])
-    {
-        url = [url URLByAppendingPathComponent:@""];
-    }
-    
-    return [NSURL URLWithString:detailUrl relativeToURL:url].absoluteString; //完整的url字符串
-}
-
-- (AFHTTPRequestSerializer *)requestSerializerForRequest:(IJSNBaseRequest *)request
-{
-    AFHTTPRequestSerializer *requestSerializer = nil;
-    // http  或者 json
-    if (request.requestSerializerType == IJSRequestSerializerTypeHTTP)
-    {
-        requestSerializer = [AFHTTPRequestSerializer serializer];
-    }
-    else if (request.requestSerializerType == IJSRequestSerializerTypeJSON)
-    {
-        requestSerializer = [AFJSONRequestSerializer serializer];
-    }
-    
-    requestSerializer.timeoutInterval = request.requestTimeoutInterval;  // 请求超时时间
-    requestSerializer.allowsCellularAccess = request.allowsCellularAccess;  //是否允许数据服务
-    
-    //如果当前请求需要账号 密码 验证
-    NSArray<NSString *> *authorizationHeaderFieldArray = [request requestAuthorizationHeaderFieldArray];
-    if (authorizationHeaderFieldArray != nil)
-    {
-        [requestSerializer setAuthorizationHeaderFieldWithUsername:authorizationHeaderFieldArray.firstObject
-                                                          password:authorizationHeaderFieldArray.lastObject];
-    }
-    
-    //如果当前请求需要自定义 HTTPHeaderField
-    NSDictionary<NSString *, NSString *> *headerFieldValueDictionary = request.requestHeaderFieldValueDictionary;
-    if (headerFieldValueDictionary != nil)
-    {
-        for (NSString *httpHeaderField in headerFieldValueDictionary.allKeys)
-        {
-            NSString *value = headerFieldValueDictionary[httpHeaderField];
-            [requestSerializer setValue:value forHTTPHeaderField:httpHeaderField];
-        }
-    }
-    return requestSerializer;
-}
-
+// 添加请求
 - (void)addRequest:(IJSNBaseRequest *)request
 {
     NSParameterAssert(request != nil); //断言为真，则表明程序运行正常，而断言为假，则意味着它已经在代码中发现了意料之外的错误
@@ -195,9 +83,17 @@
     {
         __block NSURLSessionDataTask *dataTask = nil;
         //如果存在用户自定义request，则直接走AFNetworking的dataTaskWithRequest:方法
-        dataTask = [_manager dataTaskWithRequest:customUrlRequest completionHandler:^(NSURLResponse *_Nonnull response, id _Nullable responseObject, NSError *_Nullable error) {
-            [self handleRequestResult:dataTask responseObject:responseObject error:error]; //响应的统一处理
+//        dataTask = [_manager dataTaskWithRequest:customUrlRequest completionHandler:^(NSURLResponse *_Nonnull response, id _Nullable responseObject, NSError *_Nullable error) {
+//            [self handleRequestResult:dataTask responseObject:responseObject error:error]; //响应的统一处理
+//        }];
+        
+        dataTask =[_manager dataTaskWithRequest:customUrlRequest
+                                 uploadProgress:request.resumableUploadProgressBlock
+                               downloadProgress:request.resumableDownloadProgressBlock
+                              completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+              [self handleRequestResult:dataTask responseObject:responseObject error:error]; //响应的统一处理
         }];
+
         request.requestTask = dataTask;
     }
     else
@@ -458,8 +354,7 @@
 - (void)requestDidFailWithRequest:(IJSNBaseRequest *)request error:(NSError *)error
 {
     request.error = error;
-    IJSNLog(@"请求 %@ 失败, status code = %ld, error = %@",
-           NSStringFromClass([request class]), (long) request.responseStatusCode, error.localizedDescription);
+    IJSNLog(@"请求 %@ 失败, status code = %ld, error = %@,原因可能是序列化失败", NSStringFromClass([request class]), (long) request.responseStatusCode, error.localizedDescription);
     
     // 储存未完成的下载数据
     NSData *incompleteDownloadData = error.userInfo[NSURLSessionDownloadTaskResumeData];
@@ -548,11 +443,31 @@
     }
     //获得request以后来获取dataTask
     __block NSURLSessionDataTask *dataTask = nil;
-    dataTask = [_manager dataTaskWithRequest:request
-                           completionHandler:^(NSURLResponse *__unused response, id responseObject, NSError *_error) {
-                               [self handleRequestResult:dataTask responseObject:responseObject error:_error];  //响应的统一处理
-                           }];
+    //1. 获取task对应的request
+//    dataTask = [_manager dataTaskWithRequest:request
+//                           completionHandler:^(NSURLResponse *__unused response, id responseObject, NSError *_error) {
+//                               [self handleRequestResult:dataTask responseObject:responseObject error:_error];  //响应的统一处理
+//                           }];
     
+    dataTask = [_manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+//        Lock();
+        IJSNBaseRequest *baseRequest = _requestsRecord[@(dataTask.taskIdentifier)];
+//        Unlock();
+        if (baseRequest.resumableUploadProgressBlock)
+        {
+            baseRequest.resumableUploadProgressBlock(uploadProgress);
+        }
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+//        Lock();
+        IJSNBaseRequest *baseRequest = _requestsRecord[@(dataTask.taskIdentifier)];
+//        Unlock();
+        if (baseRequest.resumableDownloadProgressBlock)
+        {
+            baseRequest.resumableDownloadProgressBlock(downloadProgress);
+        }
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+         [self handleRequestResult:dataTask responseObject:responseObject error:error];  //响应的统一处理
+    }];
     return dataTask;
 }
 // 下载任务
@@ -616,7 +531,7 @@
         }
         @catch (NSException *exception)
         {
-            IJSNLog(@"Resume download failed, reason = %@", exception.reason);
+            IJSNLog(@"重新下载失败, reason = %@", exception.reason);
             resumeSucceeded = NO;
         }
     }
@@ -678,7 +593,117 @@
 {
     _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
 }
+- (AFJSONResponseSerializer *)jsonResponseSerializer
+{
+    if (!_jsonResponseSerializer)
+    {
+        _jsonResponseSerializer = [AFJSONResponseSerializer serializer];
+        _jsonResponseSerializer.acceptableStatusCodes = _allStatusCodes;
+    }
+    return _jsonResponseSerializer;
+}
 
+- (AFXMLParserResponseSerializer *)xmlParserResponseSerialzier
+{
+    if (!_xmlParserResponseSerialzier)
+    {
+        _xmlParserResponseSerialzier = [AFXMLParserResponseSerializer serializer];
+        _xmlParserResponseSerialzier.acceptableStatusCodes = _allStatusCodes;
+    }
+    return _xmlParserResponseSerialzier;
+}
+
+#pragma mark -
+
+//格式化当前的请求---返回当前请求url
+- (NSString *)buildRequestUrl:(IJSNBaseRequest *)request
+{
+    NSParameterAssert(request != nil);
+    
+    NSString *detailUrl =request.requestUrl;  //用户自定义的url（不包括在YTKConfig里面设置的base_url）
+    NSURL *temp = [NSURL URLWithString:detailUrl];
+    // 如果请求的url 是一个完整的url 则会直接忽略之前的 baseurl 参数等等的 配置 存在host和scheme的url立即返回正确
+    if (temp && temp.host && temp.scheme)
+    {
+        return detailUrl;
+    }
+    // 如果需要过滤url，则过滤
+    NSArray *filters = _config.urlFilters;
+    for (id<IJSUrlFilterDelegate> f in filters)
+    {
+        detailUrl = [f filterUrl:detailUrl withRequest:request];
+    }
+    
+    NSString *baseUrl;
+    if (request.useCDN)
+    {
+        if ([request cdnUrl].length > 0)
+        {
+            baseUrl = request.cdnUrl; //如果使用CDN，在当前请求没有配置CDN地址的情况下，返回全局配置的CDN
+        }
+        else
+        {
+            baseUrl = _config.cdnUrl;
+        }
+    }
+    else
+    {
+        if ([request baseUrl].length > 0)
+        {//如果使用baseUrl，在当前请求没有配置baseUrl，返回全局配置的baseUrl
+            baseUrl = request.baseUrl;
+        }
+        else
+        {
+            baseUrl = _config.baseUrl;
+        }
+    }
+    // 如果末尾没有/，则在末尾添加一个／
+    NSURL *url = [NSURL URLWithString:baseUrl];
+    
+    if (baseUrl.length > 0 && ![baseUrl hasSuffix:@"/"])
+    {
+        url = [url URLByAppendingPathComponent:@""];
+    }
+    
+    return [NSURL URLWithString:detailUrl relativeToURL:url].absoluteString; //完整的url字符串
+}
+// 序列化
+- (AFHTTPRequestSerializer *)requestSerializerForRequest:(IJSNBaseRequest *)request
+{
+    AFHTTPRequestSerializer *requestSerializer = nil;
+    // http  或者 json
+    if (request.requestSerializerType == IJSRequestSerializerTypeHTTP)
+    {
+        requestSerializer = [AFHTTPRequestSerializer serializer];
+    }
+    else if (request.requestSerializerType == IJSRequestSerializerTypeJSON)
+    {
+        requestSerializer = [AFJSONRequestSerializer serializer];
+    }
+    
+    requestSerializer.timeoutInterval = request.requestTimeoutInterval;  // 请求超时时间
+    requestSerializer.allowsCellularAccess = request.allowsCellularAccess;  //是否允许数据服务
+    
+    //如果当前请求需要账号 密码 验证
+    NSArray<NSString *> *authorizationHeaderFieldArray = [request requestAuthorizationHeaderFieldArray];
+    if (authorizationHeaderFieldArray != nil)
+    {
+        [requestSerializer setAuthorizationHeaderFieldWithUsername:authorizationHeaderFieldArray.firstObject
+                                                          password:authorizationHeaderFieldArray.lastObject];
+    }
+    
+    //如果当前请求需要自定义 HTTPHeaderField
+    NSDictionary<NSString *, NSString *> *headerFieldValueDictionary = request.requestHeaderFieldValueDictionary;
+    if (headerFieldValueDictionary != nil)
+    {
+        for (NSString *httpHeaderField in headerFieldValueDictionary.allKeys)
+        {
+            NSString *value = headerFieldValueDictionary[httpHeaderField];
+            [requestSerializer setValue:value forHTTPHeaderField:httpHeaderField];
+        }
+    }
+    return requestSerializer;
+}
 
 
 

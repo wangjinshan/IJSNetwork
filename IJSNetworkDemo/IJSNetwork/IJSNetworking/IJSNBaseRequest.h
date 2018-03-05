@@ -56,7 +56,7 @@ NS_ENUM(NSInteger){
     @protocol AFMultipartFormData;
     
     typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
-    typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *);
+    typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *progress);
     
     @class IJSNBaseRequest;
     
@@ -394,7 +394,13 @@ NS_ENUM(NSInteger){
 @property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock resumableDownloadProgressBlock;
 
 /**
- 请求的优先级 ios8之上有效 默认是 IJSRequestPriorityDefault
+ 上传进度条
+ */
+@property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock resumableUploadProgressBlock;
+
+
+/**
+ 请求的优先级 ios8之上有效 默认是 RequestPriorityDefault
  */
 @property (nonatomic) IJSRequestPriority requestPriority;
 
