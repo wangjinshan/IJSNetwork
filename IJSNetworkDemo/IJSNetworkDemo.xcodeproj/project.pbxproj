@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		746F6468204E82780075E182 /* IJSNBatchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F6467204E82780075E182 /* IJSNBatchRequest.m */; };
+		746F646B204E838D0075E182 /* IJSNBatchRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F646A204E838D0075E182 /* IJSNBatchRequestAgent.m */; };
+		746F646E204E84190075E182 /* IJSNChainRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F646D204E84190075E182 /* IJSNChainRequest.m */; };
+		746F6471204E84300075E182 /* IJSNChainRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F6470204E84300075E182 /* IJSNChainRequestAgent.m */; };
+		746F6474204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F6473204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.m */; };
+		746F6477204E97F80075E182 /* IJSNChainRequest+RequestAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F6476204E97F80075E182 /* IJSNChainRequest+RequestAccessory.m */; };
+		746F647D204EA68C0075E182 /* IJSUploadApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 746F647C204EA68C0075E182 /* IJSUploadApi.m */; };
 		7484EE86204D015400E48B1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484EE85204D015400E48B1E /* AppDelegate.m */; };
 		7484EE89204D015400E48B1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484EE88204D015400E48B1E /* ViewController.m */; };
 		7484EE8C204D015400E48B1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7484EE8A204D015400E48B1E /* Main.storyboard */; };
@@ -27,6 +34,21 @@
 
 /* Begin PBXFileReference section */
 		0723872CCBF30BC84DA7EB5A /* Pods-IJSNetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IJSNetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IJSNetworkDemo/Pods-IJSNetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		746F6466204E82780075E182 /* IJSNBatchRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSNBatchRequest.h; sourceTree = "<group>"; };
+		746F6467204E82780075E182 /* IJSNBatchRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSNBatchRequest.m; sourceTree = "<group>"; };
+		746F6469204E838D0075E182 /* IJSNBatchRequestAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSNBatchRequestAgent.h; sourceTree = "<group>"; };
+		746F646A204E838D0075E182 /* IJSNBatchRequestAgent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSNBatchRequestAgent.m; sourceTree = "<group>"; };
+		746F646C204E84190075E182 /* IJSNChainRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSNChainRequest.h; sourceTree = "<group>"; };
+		746F646D204E84190075E182 /* IJSNChainRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSNChainRequest.m; sourceTree = "<group>"; };
+		746F646F204E84300075E182 /* IJSNChainRequestAgent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSNChainRequestAgent.h; sourceTree = "<group>"; };
+		746F6470204E84300075E182 /* IJSNChainRequestAgent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSNChainRequestAgent.m; sourceTree = "<group>"; };
+		746F6472204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IJSNBatchRequest+RequestAccessory.h"; sourceTree = "<group>"; };
+		746F6473204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IJSNBatchRequest+RequestAccessory.m"; sourceTree = "<group>"; };
+		746F6475204E97F80075E182 /* IJSNChainRequest+RequestAccessory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IJSNChainRequest+RequestAccessory.h"; sourceTree = "<group>"; };
+		746F6476204E97F80075E182 /* IJSNChainRequest+RequestAccessory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IJSNChainRequest+RequestAccessory.m"; sourceTree = "<group>"; };
+		746F647B204EA68C0075E182 /* IJSUploadApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSUploadApi.h; sourceTree = "<group>"; };
+		746F647C204EA68C0075E182 /* IJSUploadApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSUploadApi.m; sourceTree = "<group>"; };
+		746F647E204EA96A0075E182 /* IJSNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IJSNetworking.h; sourceTree = "<group>"; };
 		7484EE81204D015400E48B1E /* IJSNetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IJSNetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7484EE84204D015400E48B1E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7484EE85204D015400E48B1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,6 +132,8 @@
 				74F5E628204D0EF400974461 /* IJSRegisterAPI.m */,
 				74F5E624204D0ECF00974461 /* IJSDownloadMP4.h */,
 				74F5E625204D0ECF00974461 /* IJSDownloadMP4.m */,
+				746F647B204EA68C0075E182 /* IJSUploadApi.h */,
+				746F647C204EA68C0075E182 /* IJSUploadApi.m */,
 				7484EE8A204D015400E48B1E /* Main.storyboard */,
 				7484EE8D204D015400E48B1E /* Assets.xcassets */,
 				7484EE8F204D015400E48B1E /* LaunchScreen.storyboard */,
@@ -131,6 +155,7 @@
 		74F5E5FD204D046300974461 /* IJSNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				746F647E204EA96A0075E182 /* IJSNetworking.h */,
 				74F5E60D204D046F00974461 /* IJSNBaseRequest.h */,
 				74F5E60C204D046F00974461 /* IJSNBaseRequest.m */,
 				74F5E60B204D046F00974461 /* IJSNCacheRequest.h */,
@@ -139,6 +164,14 @@
 				74F5E610204D047000974461 /* IJSNetworkConfig.m */,
 				74F5E612204D047000974461 /* IJSNetworkRequestAgent.h */,
 				74F5E60E204D047000974461 /* IJSNetworkRequestAgent.m */,
+				746F6466204E82780075E182 /* IJSNBatchRequest.h */,
+				746F6467204E82780075E182 /* IJSNBatchRequest.m */,
+				746F6469204E838D0075E182 /* IJSNBatchRequestAgent.h */,
+				746F646A204E838D0075E182 /* IJSNBatchRequestAgent.m */,
+				746F646C204E84190075E182 /* IJSNChainRequest.h */,
+				746F646D204E84190075E182 /* IJSNChainRequest.m */,
+				746F646F204E84300075E182 /* IJSNChainRequestAgent.h */,
+				746F6470204E84300075E182 /* IJSNChainRequestAgent.m */,
 			);
 			path = IJSNetworking;
 			sourceTree = "<group>";
@@ -148,10 +181,14 @@
 			children = (
 				74F5E62A204D16BB00974461 /* IJSNetworkUtils.h */,
 				74F5E62B204D16BB00974461 /* IJSNetworkUtils.m */,
-				74F5E63F204D182C00974461 /* IJSNBaseRequest+RequestAccessory.h */,
-				74F5E640204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m */,
 				74F5E645204D297100974461 /* IJSCacheMetadata.h */,
 				74F5E646204D297100974461 /* IJSCacheMetadata.m */,
+				74F5E63F204D182C00974461 /* IJSNBaseRequest+RequestAccessory.h */,
+				74F5E640204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m */,
+				746F6472204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.h */,
+				746F6473204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.m */,
+				746F6475204E97F80075E182 /* IJSNChainRequest+RequestAccessory.h */,
+				746F6476204E97F80075E182 /* IJSNChainRequest+RequestAccessory.m */,
 			);
 			path = IJSNExtension;
 			sourceTree = "<group>";
@@ -289,16 +326,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746F6474204E88C00075E182 /* IJSNBatchRequest+RequestAccessory.m in Sources */,
+				746F646B204E838D0075E182 /* IJSNBatchRequestAgent.m in Sources */,
 				74F5E616204D047000974461 /* IJSNetworkConfig.m in Sources */,
 				74F5E615204D047000974461 /* IJSNCacheRequest.m in Sources */,
 				74F5E629204D0EF400974461 /* IJSRegisterAPI.m in Sources */,
 				74F5E626204D0ECF00974461 /* IJSDownloadMP4.m in Sources */,
+				746F647D204EA68C0075E182 /* IJSUploadApi.m in Sources */,
 				74F5E613204D047000974461 /* IJSNBaseRequest.m in Sources */,
+				746F6471204E84300075E182 /* IJSNChainRequestAgent.m in Sources */,
+				746F6477204E97F80075E182 /* IJSNChainRequest+RequestAccessory.m in Sources */,
 				74F5E62C204D16BB00974461 /* IJSNetworkUtils.m in Sources */,
 				74F5E641204D182C00974461 /* IJSNBaseRequest+RequestAccessory.m in Sources */,
 				7484EE89204D015400E48B1E /* ViewController.m in Sources */,
 				74F5E647204D297100974461 /* IJSCacheMetadata.m in Sources */,
+				746F6468204E82780075E182 /* IJSNBatchRequest.m in Sources */,
 				7484EE94204D015400E48B1E /* main.m in Sources */,
+				746F646E204E84190075E182 /* IJSNChainRequest.m in Sources */,
 				74F5E614204D047000974461 /* IJSNetworkRequestAgent.m in Sources */,
 				7484EE86204D015400E48B1E /* AppDelegate.m in Sources */,
 			);

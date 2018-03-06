@@ -26,7 +26,16 @@
 {
     return IJSRequestMethodGET;
 }
+/**
+ 构建自定义请求 如果这个方法返回 non-nil value 将忽略 `requestUrl`, `requestTimeoutInterval`,`requestArgument`, `allowsCellularAccess`, `requestMethod` and `requestSerializerType` 这些方法
+ 
+ @return 自定义请求
+ */
 
+- (NSURLRequest *)buildCustomUrlRequest
+{
+    return [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:@"http://s.budejie.com/topic/list/zuixin/41/budejie-android-6.2.8/0-20.json"]];
+}
 
 - (NSInteger)cacheTimeInSeconds
 {
@@ -48,12 +57,13 @@
 //{
 //    return IJSRequestSerializerTypeJSON;
 //}
-//- (NSString *)resumableDownloadPath
-//{
-//    NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    NSString *cachePath = [libPath stringByAppendingPathComponent:@"Caches"];
-//    NSString *filePath = [cachePath stringByAppendingPathComponent:@"1999.mp4"];
-//    NSLog(@"--------file------------%@",filePath);
-//    return filePath;
-//}
+// 缓存路径
+- (NSString *)resumableDownloadPath
+{
+    NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *cachePath = [libPath stringByAppendingPathComponent:@"Caches"];
+    NSString *filePath = [cachePath stringByAppendingPathComponent:@"1999.mp4"];
+    NSLog(@"--------file------------%@",filePath);
+    return filePath;
+}
 @end

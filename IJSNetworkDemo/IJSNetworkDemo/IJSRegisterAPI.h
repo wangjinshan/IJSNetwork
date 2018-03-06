@@ -11,14 +11,9 @@
 @interface IJSRegisterAPI : IJSNCacheRequest
 
 
+
+
 - (id)initWithUsername:(NSString *)username password:(NSString *)password;
-
-- (NSString *)userId;
-
-
-
-
-
 
 
 

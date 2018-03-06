@@ -35,7 +35,7 @@
 {
     return IJSRequestMethodGET;
 }
-// 请求体
+// 请求体,这个是在post 请求的时候添加 get 就重写
 - (id)requestArgument
 {
     return @{
@@ -43,7 +43,7 @@
              @"password": _password
              };
 }
-// 服务器返回数据检验
+// 服务器返回数据检验 注意返回的数据必须是检查的类型否则就是回调失败
 - (id)jsonValidator
 {
     return @{
@@ -53,14 +53,10 @@
              };
 }
 
-- (NSString *)userId
-{
-    return [[[self responseJSONObject] objectForKey:@"userId"] stringValue];
-}
-
+// 设置缓存时间单位 秒
 - (NSInteger)cacheTimeInSeconds
 {
-    return 0;
+    return 100;
 }
 
 // 缓存数据加载的类型

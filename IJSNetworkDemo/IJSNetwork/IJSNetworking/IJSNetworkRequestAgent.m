@@ -59,7 +59,7 @@
         _config = [IJSNetworkConfig sharedConfig];
         _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:_config.sessionConfiguration];
         _requestsRecord = [NSMutableDictionary dictionary];
-        _processingQueue = dispatch_queue_create("com.yuantiku.networkagent.processing", DISPATCH_QUEUE_CONCURRENT); // 并发队列
+        _processingQueue = dispatch_queue_create("com.shenzoom.ijs.ijsNetwork", DISPATCH_QUEUE_CONCURRENT); // 并发队列
         _allStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(100, 500)]; // NSIndexSet就是一个唯一的，有序的，无符号整数
         pthread_mutex_init(&_lock, NULL); //初始化互斥锁
         
@@ -83,10 +83,6 @@
     {
         __block NSURLSessionDataTask *dataTask = nil;
         //如果存在用户自定义request，则直接走AFNetworking的dataTaskWithRequest:方法
-//        dataTask = [_manager dataTaskWithRequest:customUrlRequest completionHandler:^(NSURLResponse *_Nonnull response, id _Nullable responseObject, NSError *_Nullable error) {
-//            [self handleRequestResult:dataTask responseObject:responseObject error:error]; //响应的统一处理
-//        }];
-        
         dataTask =[_manager dataTaskWithRequest:customUrlRequest
                                  uploadProgress:request.resumableUploadProgressBlock
                                downloadProgress:request.resumableDownloadProgressBlock
@@ -156,8 +152,8 @@
                 return [self dataTaskWithHTTPMethod:@"GET" requestSerializer:requestSerializer URLString:url parameters:param error:error];
             }
         case IJSRequestMethodPOST:
-        {    // post
-            return [self dataTaskWithHTTPMethod:@"POST" requestSerializer:requestSerializer URLString:url parameters:param constructingBodyWithBlock:constructingBlock error:error];
+        {    // post --- 包括post 上传任务
+            return [self dataTaskWithHTTPMethod:@"POST" requestSerializer:requestSerializer URLString:url parameters:param constructingBodyWithBlock:constructingBlock error:error uploadProgress:request.resumableUploadProgressBlock downloadProgress:request.resumableDownloadProgressBlock];
         }
         case IJSRequestMethodHEAD:
         {    // hrad
@@ -421,7 +417,7 @@
                                       parameters:(id)parameters
                                            error:(NSError *_Nullable __autoreleasing *)error
 {
-    return [self dataTaskWithHTTPMethod:method requestSerializer:requestSerializer URLString:URLString parameters:parameters constructingBodyWithBlock:nil error:error];
+    return [self dataTaskWithHTTPMethod:method requestSerializer:requestSerializer URLString:URLString parameters:parameters constructingBodyWithBlock:nil error:error uploadProgress:nil downloadProgress:nil];
 }
 //最终返回NSURLSessionDataTask实例
 - (NSURLSessionDataTask *)dataTaskWithHTTPMethod:(NSString *)method
@@ -430,6 +426,8 @@
                                       parameters:(id)parameters
                        constructingBodyWithBlock:(nullable void (^)(id<AFMultipartFormData> formData))block
                                            error:(NSError *_Nullable __autoreleasing *)error
+                                        uploadProgress:(nullable void (^)(NSProgress *downloadProgress))uploadProgressBlock
+                                        downloadProgress:(nullable void (^)(NSProgress *downloadProgress))downloadProgressBlock
 {
     NSMutableURLRequest *request = nil;
     //根据有无构造请求体的block的情况来获取request
@@ -444,30 +442,13 @@
     //获得request以后来获取dataTask
     __block NSURLSessionDataTask *dataTask = nil;
     //1. 获取task对应的request
-//    dataTask = [_manager dataTaskWithRequest:request
-//                           completionHandler:^(NSURLResponse *__unused response, id responseObject, NSError *_error) {
-//                               [self handleRequestResult:dataTask responseObject:responseObject error:_error];  //响应的统一处理
-//                           }];
-    
-    dataTask = [_manager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
-//        Lock();
-        IJSNBaseRequest *baseRequest = _requestsRecord[@(dataTask.taskIdentifier)];
-//        Unlock();
-        if (baseRequest.resumableUploadProgressBlock)
-        {
-            baseRequest.resumableUploadProgressBlock(uploadProgress);
-        }
-    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
-//        Lock();
-        IJSNBaseRequest *baseRequest = _requestsRecord[@(dataTask.taskIdentifier)];
-//        Unlock();
-        if (baseRequest.resumableDownloadProgressBlock)
-        {
-            baseRequest.resumableDownloadProgressBlock(downloadProgress);
-        }
-    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-         [self handleRequestResult:dataTask responseObject:responseObject error:error];  //响应的统一处理
+    dataTask =[_manager dataTaskWithRequest:request
+                             uploadProgress:uploadProgressBlock
+                           downloadProgress:downloadProgressBlock
+                          completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+                              [self handleRequestResult:dataTask responseObject:responseObject error:error];  //响应的统一处理
     }];
+    
     return dataTask;
 }
 // 下载任务
