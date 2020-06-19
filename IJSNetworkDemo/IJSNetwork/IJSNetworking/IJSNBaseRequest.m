@@ -20,6 +20,7 @@
 
 NSString *const IJSRequestValidationErrorDomain = @"com.shenzoom.ijsnetwork.baseRequest";
 
+
 @interface IJSNBaseRequest ()
 
 @property (nonatomic, strong, readwrite) NSURLSessionTask *requestTask;
@@ -31,46 +32,38 @@ NSString *const IJSRequestValidationErrorDomain = @"com.shenzoom.ijsnetwork.base
 
 @end
 
+
 @implementation IJSNBaseRequest
 
-- (NSHTTPURLResponse *)response
-{
-    return (NSHTTPURLResponse *) self.requestTask.response;
+- (NSHTTPURLResponse *)response {
+    return (NSHTTPURLResponse *)self.requestTask.response;
 }
 // 方法响应的code
-- (NSInteger)responseStatusCode
-{
+- (NSInteger)responseStatusCode {
     return self.response.statusCode;
 }
 
-- (NSDictionary *)responseHeaders
-{
+- (NSDictionary *)responseHeaders {
     return self.response.allHeaderFields;
 }
 
-- (NSURLRequest *)currentRequest
-{
+- (NSURLRequest *)currentRequest {
     return self.requestTask.currentRequest;
 }
 
-- (NSURLRequest *)originalRequest
-{
+- (NSURLRequest *)originalRequest {
     return self.requestTask.originalRequest;
 }
 
-- (BOOL)isCancelled
-{
-    if (!self.requestTask)
-    {
+- (BOOL)isCancelled {
+    if (!self.requestTask) {
         return NO;
     }
     return self.requestTask.state == NSURLSessionTaskStateCanceling;
 }
 
-- (BOOL)isExecuting
-{
-    if (!self.requestTask)
-    {
+- (BOOL)isExecuting {
+    if (!self.requestTask) {
         return NO;
     }
     return self.requestTask.state == NSURLSessionTaskStateRunning;
@@ -79,8 +72,7 @@ NSString *const IJSRequestValidationErrorDomain = @"com.shenzoom.ijsnetwork.base
 #pragma mark - Request Configuration
 // 将外部传进来的 block 保存起来
 - (void)setCompletionBlockWithSuccess:(IJSRequestCompletionBlock)success
-                              failure:(IJSRequestCompletionBlock)failure
-{
+                              failure:(IJSRequestCompletionBlock)failure {
     self.successCompletionBlock = success;
     self.failureCompletionBlock = failure;
 }
@@ -88,16 +80,13 @@ NSString *const IJSRequestValidationErrorDomain = @"com.shenzoom.ijsnetwork.base
 /**
  清空block 避免循环引用
  */
-- (void)clearCompletionBlock
-{
+- (void)clearCompletionBlock {
     self.successCompletionBlock = nil;
     self.failureCompletionBlock = nil;
 }
 
-- (void)addAccessory:(id<IJSRequestAccessoryDelegate>)accessory
-{
-    if (!self.requestAccessories)
-    {
+- (void)addAccessory:(id<IJSRequestAccessoryDelegate>)accessory {
+    if (!self.requestAccessories) {
         self.requestAccessories = [NSMutableArray array];
     }
     [self.requestAccessories addObject:accessory];
@@ -105,139 +94,108 @@ NSString *const IJSRequestValidationErrorDomain = @"com.shenzoom.ijsnetwork.base
 
 #pragma mark - Request Action
 //  开始发起网路请求
-- (void)start
-{
-    [self toggleAccessoriesWillStartCallBack];  // //1. 告诉Accessories即将请求回调了（其实是即将发起请求）toggle 切换
-    
+- (void)start {
+    [self toggleAccessoriesWillStartCallBack]; // //1. 告诉Accessories即将请求回调了（其实是即将发起请求）toggle 切换
+
     [[IJSNetworkRequestAgent sharedAgent] addRequest:self]; //2. 令agent添加请求并发起请求，在这里并不是组合关系，agent只是一个单例
 }
 // 停止请求
-- (void)stop
-{
-    [self toggleAccessoriesWillStopCallBack]; //告诉Accessories将要回调了
-    self.delegate = nil; //清空代理
+- (void)stop {
+    [self toggleAccessoriesWillStopCallBack];                  //告诉Accessories将要回调了
+    self.delegate = nil;                                       //清空代理
     [[IJSNetworkRequestAgent sharedAgent] cancelRequest:self]; //调用agent的取消某个request的方法
-    [self toggleAccessoriesDidStopCallBack]; //告诉Accessories回调完成了
+    [self toggleAccessoriesDidStopCallBack];                   //告诉Accessories回调完成了
 }
 
 - (void)startWithCompletionBlockWithSuccess:(IJSRequestCompletionBlock)success
-                                    failure:(IJSRequestCompletionBlock)failure
-{
+                                    failure:(IJSRequestCompletionBlock)failure {
     [self setCompletionBlockWithSuccess:success failure:failure]; //保存成功和失败的回调block，便于将来调用
-    [self start]; //发起请求
+    [self start];                                                 //发起请求
 }
 
 #pragma mark - Subclass Override
 
-- (void)requestCompletePreprocessor
-{
+- (void)requestCompletePreprocessor {
 }
 
-- (void)requestCompleteFilter
-{
+- (void)requestCompleteFilter {
 }
 
-- (void)requestFailedPreprocessor
-{
+- (void)requestFailedPreprocessor {
 }
 
-- (void)requestFailedFilter
-{
+- (void)requestFailedFilter {
 }
 
-- (NSString *)requestUrl
-{
+- (NSString *)requestUrl {
     return @"";
 }
 
-- (NSString *)cdnUrl
-{
+- (NSString *)cdnUrl {
     return @"";
 }
 
-- (NSString *)baseUrl
-{
+- (NSString *)baseUrl {
     return @"";
 }
 
-- (NSTimeInterval)requestTimeoutInterval
-{
+- (NSTimeInterval)requestTimeoutInterval {
     return 60;
 }
 
-- (id)requestArgument
-{
+- (id)requestArgument {
     return nil;
 }
 
-- (id)cacheFileNameFilterForRequestArgument:(id)argument
-{
+- (id)cacheFileNameFilterForRequestArgument:(id)argument {
     return argument;
 }
 
-- (IJSRequestMethod)requestMethod
-{
+- (IJSRequestMethod)requestMethod {
     return IJSRequestMethodGET;
 }
 
-- (IJSRequestSerializerType)requestSerializerType
-{
+- (IJSRequestSerializerType)requestSerializerType {
     return IJSRequestSerializerTypeHTTP;
 }
 
-- (IJSResponseSerializerType)responseSerializerType
-{
+- (IJSResponseSerializerType)responseSerializerType {
     return IJSResponseSerializerTypeJSON;
 }
 
-- (NSArray *)requestAuthorizationHeaderFieldArray
-{
+- (NSArray *)requestAuthorizationHeaderFieldArray {
     return nil;
 }
 
-- (NSDictionary *)requestHeaderFieldValueDictionary
-{
+- (NSDictionary *)requestHeaderFieldValueDictionary {
     return nil;
 }
 
-- (NSURLRequest *)buildCustomUrlRequest
-{
+- (NSURLRequest *)buildCustomUrlRequest {
     return nil;
 }
 
-- (BOOL)useCDN
-{
+- (BOOL)useCDN {
     return NO;
 }
 
-- (BOOL)allowsCellularAccess
-{
+- (BOOL)allowsCellularAccess {
     return YES;
 }
 
-- (id)jsonValidator
-{
+- (id)jsonValidator {
     return nil;
 }
 // 方法判断响应的code是否在正确的范围
-- (BOOL)statusCodeValidator
-{
+- (BOOL)statusCodeValidator {
     NSInteger statusCode = [self responseStatusCode];
     return (statusCode >= 200 && statusCode <= 299);
 }
 
 #pragma mark - NSObject
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p>{ URL: %@ } { method: %@ } { arguments: %@ }", NSStringFromClass([self class]), self, self.currentRequest.URL, self.currentRequest.HTTPMethod, self.requestArgument];
 }
-
-
-
-
-
-
-
 
 @end

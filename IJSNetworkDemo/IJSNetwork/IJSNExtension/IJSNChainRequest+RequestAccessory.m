@@ -10,36 +10,29 @@
 
 #import "IJSNChainRequest+RequestAccessory.h"
 #import "IJSNBaseRequest.h"
+
+
 @implementation IJSNChainRequest (RequestAccessory)
 
-- (void)toggleAccessoriesWillStartCallBack
-{
-    for (id<IJSRequestAccessoryDelegate> accessory in self.requestAccessories)
-    {
-        if ([accessory respondsToSelector:@selector(requestWillStart:)])
-        {
+- (void)toggleAccessoriesWillStartCallBack {
+    for (id<IJSRequestAccessoryDelegate> accessory in self.requestAccessories) {
+        if ([accessory respondsToSelector:@selector(requestWillStart:)]) {
             [accessory requestWillStart:self];
         }
     }
 }
 
-- (void)toggleAccessoriesWillStopCallBack
-{
-    for (id<IJSRequestAccessoryDelegate> accessory in self.requestAccessories)
-    {
-        if ([accessory respondsToSelector:@selector(requestWillStop:)])
-        {
+- (void)toggleAccessoriesWillStopCallBack {
+    for (id<IJSRequestAccessoryDelegate> accessory in self.requestAccessories) {
+        if ([accessory respondsToSelector:@selector(requestWillStop:)]) {
             [accessory requestWillStop:self];
         }
     }
 }
 
-- (void)toggleAccessoriesDidStopCallBack
-{
-    for (id<IJSRequestAccessoryDelegate> accessory in self.requestAccessories)
-    {
-        if ([accessory respondsToSelector:@selector(requestDidStop:)])
-        {
+- (void)toggleAccessoriesDidStopCallBack {
+    for (id<IJSRequestAccessoryDelegate> accessory in self.requestAccessories) {
+        if ([accessory respondsToSelector:@selector(requestDidStop:)]) {
             [accessory requestDidStop:self];
         }
     }

@@ -9,21 +9,19 @@
 
 #import "IJSDownloadMP4.h"
 
-@implementation IJSDownloadMP4
-{
+
+@implementation IJSDownloadMP4 {
     NSString *_username;
     NSString *_password;
 }
 
 // 需要和baseUrl拼接的地址
-- (NSString *)requestUrl
-{
-//    return @"http://dvideo.spriteapp.cn/video/2018/0305/91dae4b4202711e897b5842b2b4c75ab_wpdm.mp4";
-    return @"/topic/list/zuixin/41/budejie-android-6.2.8/0-20.json";
+- (NSString *)requestUrl {
+    return @"http://dvideo.spriteapp.cn/video/2018/0305/91dae4b4202711e897b5842b2b4c75ab_wpdm.mp4";
+    //    return @"/topic/list/zuixin/41/budejie-android-6.2.8/0-20.json";
 }
 //请求方法，某人是GET
-- (IJSRequestMethod)requestMethod
-{
+- (IJSRequestMethod)requestMethod {
     return IJSRequestMethodGET;
 }
 /**
@@ -32,13 +30,12 @@
  @return 自定义请求
  */
 
-- (NSURLRequest *)buildCustomUrlRequest
-{
-    return [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:@"http://s.budejie.com/topic/list/zuixin/41/budejie-android-6.2.8/0-20.json"]];
-}
+//- (NSURLRequest *)buildCustomUrlRequest
+//{
+//    return [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://s.budejie.com/topic/list/zuixin/41/budejie-android-6.2.8/0-20.json"]];
+//}
 
-- (NSInteger)cacheTimeInSeconds
-{
+- (NSInteger)cacheTimeInSeconds {
     return 0;
 }
 
@@ -58,12 +55,11 @@
 //    return IJSRequestSerializerTypeJSON;
 //}
 // 缓存路径
-- (NSString *)resumableDownloadPath
-{
+- (NSString *)resumableDownloadPath {
     NSString *libPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *cachePath = [libPath stringByAppendingPathComponent:@"Caches"];
     NSString *filePath = [cachePath stringByAppendingPathComponent:@"1999.mp4"];
-    NSLog(@"--------file------------%@",filePath);
+    NSLog(@"--------file------------%@", filePath);
     return filePath;
 }
 @end

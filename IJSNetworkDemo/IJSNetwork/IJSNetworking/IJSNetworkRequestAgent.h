@@ -53,16 +53,5 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)buildRequestUrl:(IJSNBaseRequest *)request;
 
-
-
-
-
-
-
-
-
-
-
-
 @end
 NS_ASSUME_NONNULL_END

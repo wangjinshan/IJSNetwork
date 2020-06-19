@@ -11,7 +11,6 @@
 #ifndef IJSNetworking_h
 #define IJSNetworking_h
 
-
 #import "IJSNBaseRequest.h"
 #import "IJSNCacheRequest.h"
 #import "IJSNetworkRequestAgent.h"
@@ -23,13 +22,5 @@
 
 #import "IJSNChainRequest.h"
 #import "IJSNChainRequestAgent.h"
-
-
-
-
-
-
-
-
 
 #endif /* IJSNetworking_h */

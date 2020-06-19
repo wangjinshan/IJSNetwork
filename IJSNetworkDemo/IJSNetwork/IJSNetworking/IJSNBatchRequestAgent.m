@@ -9,15 +9,18 @@
 
 #import "IJSNBatchRequestAgent.h"
 #import "IJSNBatchRequest.h"
+
+
 @interface IJSNBatchRequestAgent ()
 
 @property (strong, nonatomic) NSMutableArray<IJSNBatchRequest *> *requestArray;
 
 @end
+
+
 @implementation IJSNBatchRequestAgent
 
-+ (IJSNBatchRequestAgent *)sharedAgent
-{
++ (IJSNBatchRequestAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -26,28 +29,22 @@
     return sharedInstance;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _requestArray = [NSMutableArray array];
     }
     return self;
 }
 
-- (void)addBatchRequest:(IJSNBatchRequest *)request
-{
-    @synchronized(self)
-    {
+- (void)addBatchRequest:(IJSNBatchRequest *)request {
+    @synchronized(self) {
         [_requestArray addObject:request];
     }
 }
 
-- (void)removeBatchRequest:(IJSNBatchRequest *)request
-{
-    @synchronized(self)
-    {
+- (void)removeBatchRequest:(IJSNBatchRequest *)request {
+    @synchronized(self) {
         [_requestArray removeObject:request];
     }
 }

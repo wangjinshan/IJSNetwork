@@ -23,9 +23,9 @@ NS_ENUM(NSInteger){
     IJSRequestCacheErrorInvalidCacheTime = -5,
     IJSRequestCacheErrorInvalidMetadata = -6,
     IJSRequestCacheErrorInvalidCacheData = -7,
-    };
-    
-    /**
+};
+
+/**
      你需要继承并实现的类 继承自 IJSBaseRequest,增加了本地缓存的功能 由于负责环境请求不会缓存 `Cache-Control`, `Last-Modified`, 等控制
      */
 @interface IJSNCacheRequest : IJSNBaseRequest
@@ -39,7 +39,6 @@ NS_ENUM(NSInteger){
  数据是不是来自本地
  */
 - (BOOL)isDataFromCache;
-
 
 /**
  从缓存中加载数据
@@ -91,14 +90,6 @@ NS_ENUM(NSInteger){
  @return 默认是YES
  */
 - (BOOL)writeCacheAsynchronously;
-
-
-
-
-
-
-
-
 
 @end
 NS_ASSUME_NONNULL_END

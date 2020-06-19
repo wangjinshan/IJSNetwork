@@ -11,10 +11,11 @@
 #import "IJSNetworkRequestAgent.h"
 NS_ASSUME_NONNULL_BEGIN
 /**
- 提供JSON验证，appVersion等辅助性的方法；给YTKBaseRequest增加一些分类。
+ 提供JSON验证，appVersion等辅助性的方法；给IJSBaseRequest增加一些分类。
  */
 FOUNDATION_EXPORT void IJSNLog(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 @class AFHTTPSessionManager;
+
 
 @interface IJSNetworkUtils : NSObject
 
@@ -30,10 +31,10 @@ FOUNDATION_EXPORT void IJSNLog(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 
 + (BOOL)validateResumeData:(NSData *)data;
 
-
 @end
 
-#pragma mark -----------------------添加分类添加几个属性,只有声明没有实现,然后去实现分类的属性方法------------------------------
+#pragma mark-----------------------添加分类添加几个属性,只有声明没有实现,然后去实现分类的属性方法------------------------------
+
 
 @interface IJSNBaseRequest (Getter)
 
@@ -55,6 +56,7 @@ FOUNDATION_EXPORT void IJSNLog(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 
 @end
 
+
 @interface IJSNetworkRequestAgent (Private)
 
 - (AFHTTPSessionManager *)manager;
@@ -62,7 +64,6 @@ FOUNDATION_EXPORT void IJSNLog(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 - (void)resetURLSessionManagerWithConfiguration:(NSURLSessionConfiguration *)configuration;
 
 - (NSString *)incompleteDownloadTempCacheFolder;
-
 
 @end
 

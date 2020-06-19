@@ -8,6 +8,8 @@
 
 #import "IJSNCacheRequest.h"
 #import <UIKit/UIKit.h>
+
+
 @interface IJSUploadApi : IJSNCacheRequest
 
 - (id)initWithImage:(UIImage *)image;

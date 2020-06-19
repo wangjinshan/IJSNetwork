@@ -16,18 +16,18 @@
 #import "AFNetworking.h"
 #endif
 
-@interface IJSNetworkConfig()
 
-@property(nonatomic,strong) NSMutableArray<id<IJSUrlFilterDelegate>> *urlFilters;  // url过滤数组
-@property(nonatomic,strong) NSMutableArray<id<IJSCacheDirPathFilterDelegate>> *cacheDirPathFilters;  // 缓存过滤数组
+@interface IJSNetworkConfig ()
+
+@property (nonatomic, strong) NSMutableArray<id<IJSUrlFilterDelegate>> *urlFilters;                   // url过滤数组
+@property (nonatomic, strong) NSMutableArray<id<IJSCacheDirPathFilterDelegate>> *cacheDirPathFilters; // 缓存过滤数组
 
 @end
 
+
 @implementation IJSNetworkConfig
 
-
-+ (IJSNetworkConfig *)sharedConfig
-{
++ (IJSNetworkConfig *)sharedConfig {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -36,11 +36,9 @@
     return sharedInstance;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         self.baseUrl = @"";
         self.cdnUrl = @"";
         self.securityPolicy = [AFSecurityPolicy defaultPolicy];
@@ -51,58 +49,34 @@
     return self;
 }
 
-- (void)addUrlFilter:(id<IJSUrlFilterDelegate>)filter
-{
+- (void)addUrlFilter:(id<IJSUrlFilterDelegate>)filter {
     [self.urlFilters addObject:filter];
 }
 
-- (void)clearUrlFilter
-{
+- (void)clearUrlFilter {
     [self.urlFilters removeAllObjects];
 }
 
-- (void)addCacheDirPathFilter:(id<IJSCacheDirPathFilterDelegate>)filter
-{
+- (void)addCacheDirPathFilter:(id<IJSCacheDirPathFilterDelegate>)filter {
     [_cacheDirPathFilters addObject:filter];
 }
 
-- (void)clearCacheDirPathFilter
-{
+- (void)clearCacheDirPathFilter {
     [_cacheDirPathFilters removeAllObjects];
 }
 
-- (NSArray<id<IJSUrlFilterDelegate>> *)urlFilters
-{
+- (NSArray<id<IJSUrlFilterDelegate>> *)urlFilters {
     return [_urlFilters copy];
 }
 
-- (NSArray<id<IJSCacheDirPathFilterDelegate>> *)cacheDirPathFilters
-{
+- (NSArray<id<IJSCacheDirPathFilterDelegate>> *)cacheDirPathFilters {
     return [_cacheDirPathFilters copy];
 }
 
 #pragma mark - NSObject
 
-- (NSString *)description
-{
+- (NSString *)description {
     return [NSString stringWithFormat:@"<%@: %p>{ baseURL: %@ } { cdnURL: %@ }", NSStringFromClass([self class]), self, self.baseUrl, self.cdnUrl];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @end

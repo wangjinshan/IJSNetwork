@@ -18,107 +18,104 @@ FOUNDATION_EXPORT NSString *const IJSRequestValidationErrorDomain;
 NS_ENUM(NSInteger){
     IJSRequestValidationErrorInvalidStatusCode = -8,
     IJSRequestValidationErrorInvalidJSONFormat = -9,
-    };
-    
-    // 请求方式
-    typedef NS_ENUM(NSInteger, IJSRequestMethod) {
-        IJSRequestMethodGET = 0,
-        IJSRequestMethodPOST,
-        IJSRequestMethodHEAD,
-        IJSRequestMethodPUT,
-        IJSRequestMethodDELETE,
-        IJSRequestMethodPATCH,
-    };
-    
-    // 请求序列化的类型
-    typedef NS_ENUM(NSInteger, IJSRequestSerializerType) {
-        IJSRequestSerializerTypeHTTP = 0,
-        IJSRequestSerializerTypeJSON,
-    };
-    
-    // 响应体序列化类型
-    typedef NS_ENUM(NSInteger, IJSResponseSerializerType) {
-        /// NSData type
-        IJSResponseSerializerTypeHTTP,
-        /// JSON object type
-        IJSResponseSerializerTypeJSON,
-        /// NSXMLParser type
-        IJSResponseSerializerTypeXMLParser,
-    };
-    
-    ///  请求优先级
-    typedef NS_ENUM(NSInteger, IJSRequestPriority) {
-        IJSRequestPriorityLow = -4L,
-        IJSRequestPriorityDefault = 0,
-        IJSRequestPriorityHigh = 4,
-    };
-    
-    @protocol AFMultipartFormData;
-    
-    typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
-    typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *progress);
-    
-    @class IJSNBaseRequest;
-    
-    typedef void (^IJSRequestCompletionBlock)(__kindof IJSNBaseRequest *request);
-    
-    
-    /**
+};
+
+// 请求方式
+typedef NS_ENUM(NSInteger, IJSRequestMethod) {
+    IJSRequestMethodGET = 0,
+    IJSRequestMethodPOST,
+    IJSRequestMethodHEAD,
+    IJSRequestMethodPUT,
+    IJSRequestMethodDELETE,
+    IJSRequestMethodPATCH,
+};
+
+// 请求序列化的类型
+typedef NS_ENUM(NSInteger, IJSRequestSerializerType) {
+    IJSRequestSerializerTypeHTTP = 0,
+    IJSRequestSerializerTypeJSON,
+};
+
+// 响应体序列化类型
+typedef NS_ENUM(NSInteger, IJSResponseSerializerType) {
+    /// NSData type
+    IJSResponseSerializerTypeHTTP,
+    /// JSON object type
+    IJSResponseSerializerTypeJSON,
+    /// NSXMLParser type
+    IJSResponseSerializerTypeXMLParser,
+};
+
+///  请求优先级
+typedef NS_ENUM(NSInteger, IJSRequestPriority) {
+    IJSRequestPriorityLow = -4L,
+    IJSRequestPriorityDefault = 0,
+    IJSRequestPriorityHigh = 4,
+};
+
+@protocol AFMultipartFormData;
+
+typedef void (^AFConstructingBlock)(id<AFMultipartFormData> formData);
+typedef void (^AFURLSessionTaskProgressBlock)(NSProgress *progress);
+
+@class IJSNBaseRequest;
+
+typedef void (^IJSRequestCompletionBlock)(__kindof IJSNBaseRequest *request);
+
+/**
      请求结果协议
      */
-    @protocol IJSRequestDelegate <NSObject>
-    
-    @optional
-    
-    /**
+@protocol IJSRequestDelegate <NSObject>
+
+@optional
+
+/**
      请求结束
      
      @param request 请求对象
      */
-    - (void)requestFinished:(__kindof IJSNBaseRequest *)request;
-    
-    
-    /**
+- (void)requestFinished:(__kindof IJSNBaseRequest *)request;
+
+/**
      请求失败
      
      @param request 请求对象
      */
-    - (void)requestFailed:(__kindof IJSNBaseRequest *)request;
-    
-    @end
-    
-    
-    /**
+- (void)requestFailed:(__kindof IJSNBaseRequest *)request;
+
+@end
+
+/**
      请求状态的协议
      */
-    @protocol IJSRequestAccessoryDelegate <NSObject>
-    
-    @optional
-    
-    /**
+@protocol IJSRequestAccessoryDelegate <NSObject>
+
+@optional
+
+/**
      请求开始
      
      @param request 请求对象
      */
-    - (void)requestWillStart:(id)request;
-    
-    /**
+- (void)requestWillStart:(id)request;
+
+/**
      将请求结束 在  `requestFinished` and `successCompletionBlock` 方法之后执行
      
      @param request 请求对象
      */
-    - (void)requestWillStop:(id)request;
-    
-    /**
+- (void)requestWillStop:(id)request;
+
+/**
      请求停止 `requestFinished` and `successCompletionBlock`. 之后执行
      
      @param request 请求对象
      */
-    - (void)requestDidStop:(id)request;
-    
-    @end
+- (void)requestDidStop:(id)request;
+
+@end
 /*-------------------------------------------------------------------------本类-------------------------------*/
-  
+
 /**
  请求的基类一个抽象的类 IJSNCacheRequest 继承自这个类
  */
@@ -210,7 +207,7 @@ NS_ENUM(NSInteger){
 - (void)startWithCompletionBlockWithSuccess:(nullable IJSRequestCompletionBlock)success
                                     failure:(nullable IJSRequestCompletionBlock)failure;
 
-#pragma mark -----------------------抽象的方法子类需要重写------------------------------------------------------------------------
+#pragma mark-----------------------抽象的方法子类需要重写------------------------------------------------------------------------
 /**
  请求成功就会在回到主线程之前在子线程回调 如果加了缓存就会在主线程回调 见 requestCompleteFilter
  */
@@ -258,7 +255,6 @@ NS_ENUM(NSInteger){
  @return 默认是60秒
  */
 - (NSTimeInterval)requestTimeoutInterval;
-
 
 /**
  填写请求的参数
@@ -323,7 +319,6 @@ NS_ENUM(NSInteger){
  @return 是否使用CDN
  */
 - (BOOL)useCDN;
-
 
 /**
  是否允许蜂窝煤数据 默认是YES
@@ -398,7 +393,6 @@ NS_ENUM(NSInteger){
  */
 @property (nonatomic, copy, nullable) AFURLSessionTaskProgressBlock resumableUploadProgressBlock;
 
-
 /**
  请求的优先级 ios8之上有效 默认是 RequestPriorityDefault
  */
@@ -425,6 +419,5 @@ NS_ENUM(NSInteger){
  */
 - (void)addAccessory:(id<IJSRequestAccessoryDelegate>)accessory;
 
-
 @end
-    NS_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

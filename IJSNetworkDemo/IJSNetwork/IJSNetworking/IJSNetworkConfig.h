@@ -11,7 +11,7 @@
  NS_ASSUME_NONNULL_BEGIN 注释
  如果需要每个属性或每个方法都去指定nonnull和nullable，是一件非常繁琐的事。苹果为了减轻我们的工作量，专门提供了两个宏：NS_ASSUME_NONNULL_BEGIN和NS_ASSUME_NONNULL_END。在这两个宏之间的代码，所有简单指针对象都被假定为nonnull，因此我们只需要去指定那些nullable的指针
  
- 用于统一设置网络请求的服务器和 CDN 的地址 被YTKRequest和YTKNetworkAgent访问。负责所有请求的全局配置，例如baseUrl和CDNUrl等等。
+ 用于统一设置网络请求的服务器和 CDN 的地址 被IJSCancheRequest和IJSNetworkAgent访问。负责所有请求的全局配置，例如baseUrl和CDNUrl等等。
  */
 NS_ASSUME_NONNULL_BEGIN
 @class IJSNBaseRequest;
@@ -45,12 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 /**
- 设置全局网络的配置 他将用在YTKNetworkAgent
+ 设置全局网络的配置 他将用在IJSNetworkAgent
  */
 @interface IJSNetworkConfig : NSObject
 
-- (instancetype)init __attribute__ ((unavailable("用 +sharedConfig 这个去初始化")));
-+ (instancetype) new __attribute__ ((unavailable("用 +sharedConfig 这个去初始化")));
+- (instancetype)init __attribute__((unavailable("用 +sharedConfig 这个去初始化")));
++ (instancetype) new __attribute__((unavailable("用 +sharedConfig 这个去初始化")));
 
 // 单例对象
 + (IJSNetworkConfig *)sharedConfig;
@@ -102,15 +102,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*-------------------------------------------------------------------------获取-------------------------------*/
 /**
- URL filters 见 YTKUrlFilterProtocol
+ URL filters 见 IJSUrlFilterDelegate
  */
 @property (nonatomic, strong, readonly) NSMutableArray<id<IJSUrlFilterDelegate>> *urlFilters;
 
 /**
- 缓存 path filters 数组 见 YTKCacheDirPathFilterProtocol定义了用户可以自定义存储位置的代理方法
+ 缓存 path filters 数组 见 IJSCacheDirPathFilterDelegate定义了用户可以自定义存储位置的代理方法
  */
 @property (nonatomic, strong, readonly) NSMutableArray<id<IJSCacheDirPathFilterDelegate>> *cacheDirPathFilters;
-
 
 @end
 

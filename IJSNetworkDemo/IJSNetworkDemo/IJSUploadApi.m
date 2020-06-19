@@ -9,23 +9,20 @@
 #import "IJSUploadApi.h"
 #import "AFNetworking.h"
 
-@implementation IJSUploadApi
-{
+
+@implementation IJSUploadApi {
     UIImage *_image;
 }
 
-- (id)initWithImage:(UIImage *)image
-{
+- (id)initWithImage:(UIImage *)image {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _image = image;
     }
     return self;
 }
 
-- (IJSRequestMethod)requestMethod
-{
+- (IJSRequestMethod)requestMethod {
     return IJSRequestMethodPOST;
 }
 
@@ -33,8 +30,7 @@
     return @"/iphone/image/upload";
 }
 
-- (AFConstructingBlock)constructingBodyBlock
-{
+- (AFConstructingBlock)constructingBodyBlock {
     return ^(id<AFMultipartFormData> formData) {
         NSData *data = UIImageJPEGRepresentation(_image, 0.9);
         NSString *name = @"image";
@@ -44,17 +40,12 @@
     };
 }
 
-- (id)jsonValidator
-{
-    return @{ @"imageId": [NSString class] };
+- (id)jsonValidator {
+    return @{ @"imageId" : [NSString class] };
 }
 
-- (NSString *)responseImageId
-{
+- (NSString *)responseImageId {
     NSDictionary *dict = self.responseJSONObject;
     return dict[@"imageId"];
 }
 @end
-
-
-

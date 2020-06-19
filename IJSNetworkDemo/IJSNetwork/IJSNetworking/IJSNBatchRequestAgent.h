@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 NS_ASSUME_NONNULL_BEGIN
 /**
- 负责管理多个YTKBatchRequest实例，持有一个数组来保存YTKBatchRequest。支持添加和删除YTKBatchRequest实例
+ 负责管理多个IJSBatchRequest实例，持有一个数组来保存IJSBatchRequest。支持添加和删除IJSBatchRequest实例
  */
 @class IJSNBatchRequest;
+
+
 @interface IJSNBatchRequestAgent : NSObject
 
-- (instancetype)init  __attribute__((unavailable("用 +sharedAgent 这个去初始化")));
+- (instancetype)init __attribute__((unavailable("用 +sharedAgent 这个去初始化")));
 + (instancetype) new __attribute__((unavailable("用 +sharedAgent 这个去初始化")));
 
 /**
@@ -39,8 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param request 批量请求
  */
 - (void)removeBatchRequest:(IJSNBatchRequest *)request;
-
-
 
 @end
 

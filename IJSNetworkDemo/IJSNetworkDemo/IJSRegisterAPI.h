@@ -8,19 +8,9 @@
 
 #import "IJSNCacheRequest.h"
 
+
 @interface IJSRegisterAPI : IJSNCacheRequest
 
-
-
-
 - (id)initWithUsername:(NSString *)username password:(NSString *)password;
-
-
-
-
-
-
-
-
 
 @end

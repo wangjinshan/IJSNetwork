@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 /**
- 用于方便地发送批量的网络请求，YTKBatchRequest 是一个容器类，它可以放置多个 YTKRequest 子类，并统一处理这多个网络请求的成功和失败
+ 用于方便地发送批量的网络请求，IJSBatchRequest 是一个容器类，它可以放置多个 IJSCacheRequest 子类，并统一处理这多个网络请求的成功和失败
  */
 NS_ASSUME_NONNULL_BEGIN
 @class IJSNCacheRequest;
@@ -41,7 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
  批量请求类 当批量请求的对象是单个时候,单个请求的对象代理将代理批量请求的代理
  */
 @interface IJSNBatchRequest : NSObject
-
 
 /**
  批量请求的数组
@@ -132,9 +131,6 @@ NS_ASSUME_NONNULL_BEGIN
  @return 状态值
  */
 - (BOOL)isDataFromCache;
-
-
-
 
 @end
 NS_ASSUME_NONNULL_END

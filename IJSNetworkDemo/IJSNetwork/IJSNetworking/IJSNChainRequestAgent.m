@@ -10,15 +10,18 @@
 
 #import "IJSNChainRequestAgent.h"
 #import "IJSNChainRequest.h"
+
+
 @interface IJSNChainRequestAgent ()
 
 @property (strong, nonatomic) NSMutableArray<IJSNChainRequest *> *requestArray;
 
 @end
+
+
 @implementation IJSNChainRequestAgent
 
-+ (IJSNChainRequestAgent *)sharedAgent
-{
++ (IJSNChainRequestAgent *)sharedAgent {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -27,28 +30,22 @@
     return sharedInstance;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
-    if (self)
-    {
+    if (self) {
         _requestArray = [NSMutableArray array];
     }
     return self;
 }
 
-- (void)addChainRequest:(IJSNChainRequest *)request
-{
-    @synchronized(self)
-    {
+- (void)addChainRequest:(IJSNChainRequest *)request {
+    @synchronized(self) {
         [_requestArray addObject:request];
     }
 }
 
-- (void)removeChainRequest:(IJSNChainRequest *)request
-{
-    @synchronized(self)
-    {
+- (void)removeChainRequest:(IJSNChainRequest *)request {
+    @synchronized(self) {
         [_requestArray removeObject:request];
     }
 }

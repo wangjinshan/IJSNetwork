@@ -9,15 +9,14 @@
 
 #import "IJSCacheMetadata.h"
 
+
 @implementation IJSCacheMetadata
 
-+ (BOOL)supportsSecureCoding
-{
++ (BOOL)supportsSecureCoding {
     return YES;
 }
 //  序列化
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
+- (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:@(self.version) forKey:NSStringFromSelector(@selector(version))];
     [aCoder encodeObject:self.sensitiveDataString forKey:NSStringFromSelector(@selector(sensitiveDataString))];
     [aCoder encodeObject:@(self.stringEncoding) forKey:NSStringFromSelector(@selector(stringEncoding))];
@@ -25,11 +24,9 @@
     [aCoder encodeObject:self.appVersionString forKey:NSStringFromSelector(@selector(appVersionString))];
 }
 //  反序列化
-- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
-    if (!self)
-    {
+    if (!self) {
         return nil;
     }
     self.version = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(version))] integerValue];
@@ -37,7 +34,7 @@
     self.stringEncoding = [[aDecoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(stringEncoding))] integerValue];
     self.creationDate = [aDecoder decodeObjectOfClass:[NSDate class] forKey:NSStringFromSelector(@selector(creationDate))];
     self.appVersionString = [aDecoder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(appVersionString))];
-    
+
     return self;
 }
 

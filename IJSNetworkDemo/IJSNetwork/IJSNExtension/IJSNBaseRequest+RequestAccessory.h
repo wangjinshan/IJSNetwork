@@ -8,6 +8,7 @@
 
 #import "IJSNBaseRequest.h"
 
+
 @interface IJSNBaseRequest (RequestAccessory)
 
 /**
@@ -24,6 +25,5 @@
  请求已经停止
  */
 - (void)toggleAccessoriesDidStopCallBack;
-
 
 @end

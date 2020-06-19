@@ -8,6 +8,7 @@
 
 #import "IJSNBatchRequest.h"
 
+
 @interface IJSNBatchRequest (RequestAccessory)
 /**
  请求将开始

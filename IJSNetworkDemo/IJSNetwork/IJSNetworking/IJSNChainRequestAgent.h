@@ -11,12 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class IJSNChainRequest;
 /**
- 负责管理多个YTKChainRequestAgent实例，持有一个数组来保存YTKChainRequest。支持添加和删除YTKChainRequest实例
+ 负责管理多个IJSChainRequestAgent实例，持有一个数组来保存IJSChainRequest。支持添加和删除IJSChainRequest实例
  */
 @interface IJSNChainRequestAgent : NSObject
 
 - (instancetype)init __attribute__((unavailable("用 +sharedAgent 这个去初始化")));
-+ (instancetype) new __attribute__((unavailable("用 +sharedAgent 这个去初始化"))) ;
++ (instancetype) new __attribute__((unavailable("用 +sharedAgent 这个去初始化")));
 
 /**
  单例
@@ -40,4 +40,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-

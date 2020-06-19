@@ -20,6 +20,7 @@
 		7484EE8E204D015400E48B1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7484EE8D204D015400E48B1E /* Assets.xcassets */; };
 		7484EE91204D015400E48B1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7484EE8F204D015400E48B1E /* LaunchScreen.storyboard */; };
 		7484EE94204D015400E48B1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7484EE93204D015400E48B1E /* main.m */; };
+		74DB598C20A41366003D9A87 /* IJSNetworkDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB598B20A41366003D9A87 /* IJSNetworkDemoUITests.m */; };
 		74F5E613204D047000974461 /* IJSNBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E60C204D046F00974461 /* IJSNBaseRequest.m */; };
 		74F5E614204D047000974461 /* IJSNetworkRequestAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E60E204D047000974461 /* IJSNetworkRequestAgent.m */; };
 		74F5E615204D047000974461 /* IJSNCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E60F204D047000974461 /* IJSNCacheRequest.m */; };
@@ -31,6 +32,16 @@
 		74F5E647204D297100974461 /* IJSCacheMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 74F5E646204D297100974461 /* IJSCacheMetadata.m */; };
 		E7AF0CB3067D1D676FA079C5 /* libPods-IJSNetworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67319C0DDB2D27249C25AB8 /* libPods-IJSNetworkDemo.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74DB598E20A41366003D9A87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7484EE79204D015400E48B1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7484EE80204D015400E48B1E;
+			remoteInfo = IJSNetworkDemo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0723872CCBF30BC84DA7EB5A /* Pods-IJSNetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IJSNetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IJSNetworkDemo/Pods-IJSNetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +70,9 @@
 		7484EE90204D015400E48B1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7484EE92204D015400E48B1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7484EE93204D015400E48B1E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		74DB598920A41366003D9A87 /* IJSNetworkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IJSNetworkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		74DB598B20A41366003D9A87 /* IJSNetworkDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IJSNetworkDemoUITests.m; sourceTree = "<group>"; };
+		74DB598D20A41366003D9A87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74F5E60B204D046F00974461 /* IJSNCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJSNCacheRequest.h; sourceTree = "<group>"; };
 		74F5E60C204D046F00974461 /* IJSNBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IJSNBaseRequest.m; sourceTree = "<group>"; };
 		74F5E60D204D046F00974461 /* IJSNBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IJSNBaseRequest.h; sourceTree = "<group>"; };
@@ -90,6 +104,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		74DB598620A41366003D9A87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -107,6 +128,7 @@
 			children = (
 				74F5E5FC204D046300974461 /* IJSNetwork */,
 				7484EE83204D015400E48B1E /* IJSNetworkDemo */,
+				74DB598A20A41366003D9A87 /* IJSNetworkDemoUITests */,
 				7484EE82204D015400E48B1E /* Products */,
 				68DF600B7F257295C0E290BF /* Pods */,
 				8EBF03F44C65BDC9BE694E15 /* Frameworks */,
@@ -117,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				7484EE81204D015400E48B1E /* IJSNetworkDemo.app */,
+				74DB598920A41366003D9A87 /* IJSNetworkDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,6 +164,15 @@
 				7484EE93204D015400E48B1E /* main.m */,
 			);
 			path = IJSNetworkDemo;
+			sourceTree = "<group>";
+		};
+		74DB598A20A41366003D9A87 /* IJSNetworkDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				74DB598B20A41366003D9A87 /* IJSNetworkDemoUITests.m */,
+				74DB598D20A41366003D9A87 /* Info.plist */,
+			);
+			path = IJSNetworkDemoUITests;
 			sourceTree = "<group>";
 		};
 		74F5E5FC204D046300974461 /* IJSNetwork */ = {
@@ -224,6 +256,24 @@
 			productReference = 7484EE81204D015400E48B1E /* IJSNetworkDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		74DB598820A41366003D9A87 /* IJSNetworkDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74DB599220A41366003D9A87 /* Build configuration list for PBXNativeTarget "IJSNetworkDemoUITests" */;
+			buildPhases = (
+				74DB598520A41366003D9A87 /* Sources */,
+				74DB598620A41366003D9A87 /* Frameworks */,
+				74DB598720A41366003D9A87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74DB598F20A41366003D9A87 /* PBXTargetDependency */,
+			);
+			name = IJSNetworkDemoUITests;
+			productName = IJSNetworkDemoUITests;
+			productReference = 74DB598920A41366003D9A87 /* IJSNetworkDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,6 +286,11 @@
 					7484EE80204D015400E48B1E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					74DB598820A41366003D9A87 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7484EE80204D015400E48B1E;
 					};
 				};
 			};
@@ -253,6 +308,7 @@
 			projectRoot = "";
 			targets = (
 				7484EE80204D015400E48B1E /* IJSNetworkDemo */,
+				74DB598820A41366003D9A87 /* IJSNetworkDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -265,6 +321,13 @@
 				7484EE91204D015400E48B1E /* LaunchScreen.storyboard in Resources */,
 				7484EE8E204D015400E48B1E /* Assets.xcassets in Resources */,
 				7484EE8C204D015400E48B1E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74DB598720A41366003D9A87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,7 +411,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		74DB598520A41366003D9A87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74DB598C20A41366003D9A87 /* IJSNetworkDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		74DB598F20A41366003D9A87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7484EE80204D015400E48B1E /* IJSNetworkDemo */;
+			targetProxy = 74DB598E20A41366003D9A87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7484EE8A204D015400E48B1E /* Main.storyboard */ = {
@@ -504,6 +583,42 @@
 			};
 			name = Release;
 		};
+		74DB599020A41366003D9A87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7V3U9AVLEY;
+				INFOPLIST_FILE = IJSNetworkDemoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenzoom.ijs.IJSNetworkDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IJSNetworkDemo;
+			};
+			name = Debug;
+		};
+		74DB599120A41366003D9A87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7V3U9AVLEY;
+				INFOPLIST_FILE = IJSNetworkDemoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenzoom.ijs.IJSNetworkDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = IJSNetworkDemo;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -521,6 +636,15 @@
 			buildConfigurations = (
 				7484EE98204D015400E48B1E /* Debug */,
 				7484EE99204D015400E48B1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74DB599220A41366003D9A87 /* Build configuration list for PBXNativeTarget "IJSNetworkDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74DB599020A41366003D9A87 /* Debug */,
+				74DB599120A41366003D9A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
